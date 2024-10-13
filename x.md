@@ -1,4 +1,8 @@
-# hello
+# Just a demo x.md file
+
+This text here is ignored, just for documentation purposes.
+
+## hello
 
 Prints "Hello" to `stdout` using Zsh.
 
@@ -6,7 +10,7 @@ Prints "Hello" to `stdout` using Zsh.
 echo "Hello"
 ```
 
-# world
+## world
 
 Just prints "World" to `stdout` using JavaScript.
 
@@ -14,7 +18,7 @@ Just prints "World" to `stdout` using JavaScript.
 console.log("World");
 ```
 
-# weather-tomorrow
+## weather-tomorrow
 
 Prints the weather for tomorrow to `stdout` using Zsh.
 
@@ -22,7 +26,7 @@ Prints the weather for tomorrow to `stdout` using Zsh.
 curl wttr.in/tomorrow
 ```
 
-# generate-password
+## generate-password
 
 Prints a random password to `stdout` using Python.
 

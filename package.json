@@ -1,6 +1,6 @@
 {
   "name": "@tzador/x.md",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "bin": {
     "x": "./bin/x"
@@ -15,5 +15,8 @@
   ],
   "author": "Tim Zadorozhny <tzador@gmail.com>",
   "license": "MIT",
-  "repository": "https://github.com/tzador/x.md"
+  "repository": "https://github.com/tzador/x.md",
+  "devDependencies": {
+    "yaml": "^2.6.0"
+  }
 }

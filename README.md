@@ -23,8 +23,11 @@ npm install -g @tzador/x.md
 Create a file named `x.md` in your project root, with the following example content:
 
     <!-- /path/to/my/project/x.md -->
+    # Just a demo x.md file
 
-    # hello
+    This text here is ignored, just for documentation purposes.
+
+    ## hello
 
     Prints "Hello" to `stdout` using Zsh.
 
@@ -32,7 +35,7 @@ Create a file named `x.md` in your project root, with the following example cont
     echo "Hello"
     ```
 
-    # world
+    ## world
 
     Just prints "World" to `stdout` using JavaScript.
 
@@ -40,7 +43,7 @@ Create a file named `x.md` in your project root, with the following example cont
     console.log("World");
     ```
 
-    # weather-tomorrow
+    ## weather-tomorrow
 
     Prints the weather for tomorrow to `stdout` using Zsh.
 
@@ -48,7 +51,7 @@ Create a file named `x.md` in your project root, with the following example cont
     curl wttr.in/tomorrow
     ```
 
-    # generate-password
+    ## generate-password
 
     Prints a random password to `stdout` using Python.
 

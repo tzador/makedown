@@ -1,4 +1,4 @@
-# joke
+## joke
 
 Download a URL's content and copy it to the destination without saving
 it in temporary storage.
@@ -27,6 +27,6 @@ will cause the output to be written to standard output.
           --stdout            Write the output to stdout rather than a file
 
 ```javascript
-console.log("Hello, World!");
-console.log(process.argv);
+console.log("Why scuba divers fall out of their boats.");
+console.log("Because they're not swimming with their head out of the water.");
 ```
