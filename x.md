@@ -1,16 +1,22 @@
 # hello
 
-```sh
+Prints "Hello" to `stdout` using Zsh.
+
+```zsh
 echo "Hello"
 ```
 
 # world
+
+Just prints "World" to `stdout` using JavaScript.
 
 ```js
 console.log("World");
 ```
 
 # generate-password
+
+Prints a random password to `stdout` using Python.
 
 ```python
 import random

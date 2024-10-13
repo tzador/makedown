@@ -63,8 +63,30 @@ if (process.argv[2] === "__list_commands") {
   process.exit(0);
 }
 
+if (process.argv[2] === "--zsh-completion") {
+  console.log(`\
+# BEGIN XFile completions
+
+function _x_completion {
+  local -a options
+  options=(\${(f)"$(x __list_commands 2>/dev/null)"})
+  _describe "choices" options
+}
+
+compdef _x_completion x
+
+# END XFile completions
+`);
+  process.exit(0);
+}
+
 for (const command of commands) {
   if (command.name === process.argv[2]) {
+    if (process.argv[3] === "--help") {
+      console.log(command.info);
+      process.exit(0);
+    }
+
     const p = path.join(os.tmpdir(), `x-${Date.now()}-${Math.random()}`);
     fs.writeFileSync(p, "");
     fs.chmodSync(p, 0o755);

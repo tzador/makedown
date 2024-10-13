@@ -20,11 +20,15 @@ Create a file named `x.md` in your project root, with the following example cont
 
     # hello
 
-    ```sh
+    Prints "Hello" to `stdout` using Zsh.
+
+    ```zsh
     echo "Hello"
     ```
 
     # world
+
+    Just prints "World" to `stdout` using JavaScript.
 
     ```js
     console.log("World");
@@ -32,11 +36,13 @@ Create a file named `x.md` in your project root, with the following example cont
 
     # generate-password
 
+    Prints a random password to `stdout` using Python.
+
     ```python
     import random
     import string
 
-    length = 8
+    length = 16
 
     characters = string.ascii_letters + string.digits + string.punctuation
     password = ''.join(random.choice(characters) for _ in range(length))
@@ -47,18 +53,12 @@ Run `x generate-password` to generate a random password.
 
 # Command line completions for ZSH
 
-Add the following to your `.zshrc`:
+Run the following once to add `x` command completions to your `.zshrc`:
 
 ```zsh
-# BEGIN XFile completions
-
-function _x_completion {
-  local -a options
-  options=(${(f)"$(x __list_commands 2>/dev/null)"})
-  _describe "choices" options
-}
-
-compdef _x_completion x
-
-# END XFile completions
+x --zsh-completion >> ~/.zshrc
 ```
+
+Then restart your terminal.
+
+It will suggest available commands when you type `x` and press tab.
