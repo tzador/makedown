@@ -1,5 +1,5 @@
 {
-  "name": "@tzador/xfile",
+  "name": "xfile-cli",
   "version": "0.0.0",
   "description": "",
   "bin": {
