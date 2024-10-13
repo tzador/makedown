@@ -146,7 +146,7 @@ if (!process.argv[2] || process.argv[2] === "--help") {
 
 if (process.argv[2] === "--zsh-completion") {
   console.log(`\
-    # BEGIN XFile completions
+    # BEGIN x.md completions
 
     function _x_completion {
       local -a options
@@ -156,7 +156,7 @@ if (process.argv[2] === "--zsh-completion") {
 
       compdef _x_completion x
 
-      # END XFile completions
+      # END x.md completions
       `);
   process.exit(0);
 }

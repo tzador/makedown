@@ -1,6 +1,6 @@
 {
   "name": "@tzador/x.md",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Execute shell scripts, JavaScript code, and Python code defined in markdown files.",
   "bin": {
     "x": "./bin/x"
