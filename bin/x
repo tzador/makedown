@@ -1,0 +1,125 @@
+#!/usr/bin/env node
+const path = require("path");
+const fs = require("fs");
+const { spawnSync } = require("child_process");
+const os = require("os");
+const sources = [];
+
+function findMarkdownFiles(folder) {
+  const results = [];
+  const files = fs.readdirSync(folder);
+
+  for (const file of files) {
+    const filePath = path.join(folder, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory()) {
+      results.push(...findMarkdownFiles(filePath));
+    } else if (stat.isFile() && path.extname(file).toLowerCase() === ".md") {
+      results.push(filePath);
+    }
+  }
+
+  return results;
+}
+
+let dir = process.cwd();
+
+for (;;) {
+  const file = path.join(dir, "x.md");
+  if (fs.existsSync(file) && fs.statSync(file).isFile()) {
+    sources.push(file);
+  }
+  const folder = path.join(dir, "x");
+  if (fs.existsSync(folder) && fs.statSync(folder).isDirectory()) {
+    sources.push(...findMarkdownFiles(folder));
+  }
+  if (dir === "/") break;
+  dir = path.dirname(dir);
+}
+
+const commands = sources
+  .map((source) => {
+    const content = fs.readFileSync(source, "utf8");
+    return content.trim();
+  })
+  .join("\n\n\n")
+  .split(/^# /gm)
+  .slice(1)
+  .map((block) => {
+    const body = block.slice(block.indexOf("\n") + 1).trim();
+    const info = body.split("```")[0].trim();
+    const code = body.split("```")[1].trim();
+    return {
+      name: block.split("\n")[0].trim(),
+      info,
+      type: code.split("\n")[0].trim(),
+      code: code.split("\n").slice(1).join("\n")
+    };
+  });
+
+if (process.argv[2] === "__list_commands") {
+  commands.forEach((c) => console.log(c.name));
+  process.exit(0);
+}
+
+for (const command of commands) {
+  if (command.name === process.argv[2]) {
+    const p = path.join(os.tmpdir(), `x-${Date.now()}-${Math.random()}`);
+    fs.writeFileSync(p, "");
+    fs.chmodSync(p, 0o755);
+
+    function cleanup() {
+      if (fs.existsSync(p)) {
+        try {
+          fs.unlinkSync(p);
+        } catch (error) {
+          console.error(`Error removing temporary file ${p}:`, error.message);
+        }
+      }
+    }
+
+    const interpreters = {
+      zsh: "zsh",
+      sh: "sh",
+      bash: "bash",
+      js: "node",
+      javascript: "node",
+      py: "python",
+      python: "python"
+    };
+
+    if (interpreters[command.type]) {
+      try {
+        fs.writeFileSync(
+          p,
+          `#!/usr/bin/env ${interpreters[command.type]}\n\n` + command.code
+        );
+        const result = spawnSync(p, process.argv.slice(3), {
+          stdio: "inherit",
+          encoding: "utf-8"
+        });
+        cleanup();
+        process.exit(result.status);
+      } catch (error) {
+        console.error(
+          `x: error executing ${command.type} command:`,
+          error.message
+        );
+        cleanup();
+        process.exit(1);
+      }
+    } else {
+      console.error("x: unsupported interpreter", command.type);
+    }
+    process.exit(0);
+  }
+}
+
+if (!process.argv[2]) {
+  console.error("x: no command provided");
+  process.exit(1);
+}
+
+console.error(`x: command not found: ${process.argv[2]}`);
+process.exit(1);
