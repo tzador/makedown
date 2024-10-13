@@ -27,6 +27,6 @@ will cause the output to be written to standard output.
           --stdout            Write the output to stdout rather than a file
 
 ```javascript
-print("Hello, World!");
-print(process.argv);
+console.log("Hello, World!");
+console.log(process.argv);
 ```
