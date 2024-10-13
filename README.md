@@ -15,7 +15,7 @@ and it features built-in syntax highlighting through markdown code blocks.
 ## Installation
 
 ```zsh
-npm install -g x.md
+npm install -g @tzador/x.md
 ```
 
 ## Usage
