@@ -1,6 +1,6 @@
-# XFile
+# x.md
 
-`xfile` is a versatile CLI tool that lets you execute shell scripts,
+`x.md` is a versatile CLI tool that lets you execute shell scripts,
 JavaScript code, and Python code from one or more markdown files.
 It's a streamlined alternative to `Makefile` or `package.json` scripts,
 and it features built-in syntax highlighting through markdown code blocks.
@@ -40,6 +40,14 @@ Create a file named `x.md` in your project root, with the following example cont
     console.log("World");
     ```
 
+    # weather-tomorrow
+
+    Prints the weather for tomorrow to `stdout` using Zsh.
+
+    ```zsh
+    curl wttr.in/tomorrow
+    ```
+
     # generate-password
 
     Prints a random password to `stdout` using Python.
@@ -56,6 +64,7 @@ Create a file named `x.md` in your project root, with the following example cont
     ```
 
 Run `x generate-password` to generate a random password.
+Similarly, you can run `x hello`, `x world` or `x weather-tomorrow` to see other examples.
 
 ## Command line completions for ZSH
 

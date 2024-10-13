@@ -14,6 +14,14 @@ Just prints "World" to `stdout` using JavaScript.
 console.log("World");
 ```
 
+# weather-tomorrow
+
+Prints the weather for tomorrow to `stdout` using Zsh.
+
+```zsh
+curl wttr.in/tomorrow
+```
+
 # generate-password
 
 Prints a random password to `stdout` using Python.
