@@ -1,6 +1,6 @@
 {
-  "name": "xfile-cli",
-  "version": "0.0.1",
+  "name": "x.md",
+  "version": "0.0.0",
   "description": "",
   "bin": {
     "x": "./bin/x"
@@ -15,5 +15,5 @@
   ],
   "author": "Tim Zadorozhny <tzador@gmail.com>",
   "license": "MIT",
-  "repository": "https://github.com/tzador/xfile"
+  "repository": "https://github.com/tzador/x.md"
 }
