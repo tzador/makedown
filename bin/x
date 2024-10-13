@@ -3,7 +3,9 @@ const path = require("path");
 const fs = require("fs");
 const { spawnSync } = require("child_process");
 const os = require("os");
-const sources = [];
+const package = require("../package.json");
+
+let sources = [];
 
 const interpreters = {
   zsh: "zsh",
@@ -56,61 +58,127 @@ for (;;) {
   dir = path.dirname(dir);
 }
 
-const commands = sources
+sources.sort();
+
+const modules = sources
   .map((source) => {
     const content = fs.readFileSync(source, "utf8");
-    return content.trim();
+    return { source, content: content.trim() };
   })
-  .join("\n\n\n")
-  .split(/^## /gm)
-  .slice(1)
-  .map((block) => {
-    const body = block.slice(block.indexOf("\n") + 1).trim();
-    const info = body.split("```")[0].trim();
-    const code = body.split("```")[1].trim();
-    return {
-      name: block.split("\n")[0].trim(),
-      info,
-      type: code.split("\n")[0].trim(),
-      code: code.split("\n").slice(1).join("\n")
-    };
-  });
+  .map(({ source, content }) => ({
+    source,
+    info: content
+      .split(/^## /m)[0]
+      .replace(/^# .*$/m, "")
+      .trim(),
+    commands: content
+      .split(/^## /gm)
+      .slice(1)
+      .map((block) => {
+        const body = block.slice(block.indexOf("\n") + 1).trim();
+        const info = body.split("```")[0].trim();
+        const code = body.split("```")[1].trim();
+        return {
+          name: block.split("\n")[0].trim(),
+          info,
+          type: code.split("\n")[0].trim(),
+          code: code.split("\n").slice(1).join("\n")
+        };
+      })
+  }));
 
-if (process.argv[2] === "__list_commands") {
-  commands.forEach((c) => console.log(c.name));
+function red(text) {
+  return `\x1b[31m${text}\x1b[0m`;
+}
+
+function green(text) {
+  return `\x1b[32m${text}\x1b[0m`;
+}
+
+function blue(text) {
+  return `\x1b[34m${text}\x1b[0m`;
+}
+
+function underline(text) {
+  return `\x1b[4m${text}\x1b[0m`;
+}
+
+if (!process.argv[2] || process.argv[2] === "--help") {
+  console.log(blue(`\n# x.md version ${package.version}\n`));
+
+  console.log("The following x commands are available:\n");
+  let maxLength = 0;
+  for (const { source, commands } of modules) {
+    const p = path.relative(".", source);
+    maxLength = Math.max(maxLength, p.length + 5);
+    for (const { name } of commands) {
+      maxLength = Math.max(maxLength, name.length + 2);
+    }
+  }
+  for (const { source, commands, info } of modules) {
+    const p = path.relative(".", source);
+
+    const i = info.split("\n")[0].trim();
+
+    if (i) {
+      console.log(green(`## ${p}`.padEnd(maxLength) + `  -  ${i}`) + "\n");
+    } else {
+      console.log(green(`## ${p}`.padEnd(maxLength) + "\n"));
+    }
+
+    for (const { name, info } of commands) {
+      const line = info.trim().split("\n")[0];
+      if (line) {
+        console.log(
+          blue(`${"    x " + name.padEnd(maxLength - 6)}`),
+          " - ",
+          line
+        );
+      } else {
+        console.log(blue(`${"    x " + name.padEnd(maxLength - 6)}`));
+      }
+    }
+    console.log();
+  }
+  console.log("Passs --help argument to any x command to get more info.\n");
   process.exit(0);
 }
 
 if (process.argv[2] === "--zsh-completion") {
   console.log(`\
-# BEGIN XFile completions
+    # BEGIN XFile completions
 
-function _x_completion {
-  local -a options
-  options=(\${(f)"$(x __list_commands 2>/dev/null)"})
-  _describe "choices" options
-}
+    function _x_completion {
+      local -a options
+      options=(\${(f)"$(x --list-commands 2>/dev/null)"})
+      _describe "choices" options
+      }
 
-compdef _x_completion x
+      compdef _x_completion x
 
-# END XFile completions
-`);
+      # END XFile completions
+      `);
   process.exit(0);
 }
 
-for (const command of commands) {
-  if (command.name === process.argv[2]) {
+if (process.argv[2] === "--list-commands") {
+  commands.forEach((c) => console.log(c.name));
+  process.exit(0);
+}
+
+for (const { source, commands, info } of modules) {
+  for (const { name, info, type, code } of commands) {
+    if (name !== process.argv[2]) continue;
+
     if (process.argv[3] === "--help") {
-      console.log(command.info);
+      console.log(info);
       process.exit(0);
     }
 
-    if (interpreters[command.type]) {
+    if (interpreters[type]) {
       const p = path.join(
         ".",
-        `.x-${Date.now()}-${Math.random()}.${
-          extensions[interpreters[command.type]]
-        }`
+        `.x-${Date.now()}-${Math.random()}.${extensions[interpreters[type]]}`
       );
 
       function cleanup() {
@@ -124,9 +192,9 @@ for (const command of commands) {
       }
 
       try {
-        fs.writeFileSync(p, command.code);
+        fs.writeFileSync(p, code);
         const result = spawnSync(
-          interpreters[command.type],
+          interpreters[type],
           [p, ...process.argv.slice(3)],
           {
             stdio: "inherit",
@@ -137,23 +205,17 @@ for (const command of commands) {
         process.exit(result.status);
       } catch (error) {
         console.error(
-          `x: error executing ${command.type} command:`,
-          error.message
+          red(`x: error executing ${type} command: ${error.message}`)
         );
         cleanup();
         process.exit(1);
       }
     } else {
-      console.error("x: unsupported interpreter", command.type);
+      console.error(red(`x: unsupported interpreter ${type}`));
     }
     process.exit(0);
   }
 }
 
-if (!process.argv[2]) {
-  console.error("x: no command provided");
-  process.exit(1);
-}
-
-console.error(`x: command not found: ${process.argv[2]}`);
+console.error(red(`x: command not found: ${process.argv[2]}`));
 process.exit(1);

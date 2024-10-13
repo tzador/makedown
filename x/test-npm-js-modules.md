@@ -1,5 +1,7 @@
 ## test-npm-js-modules
 
+Prints a YAML array to `stdout`.
+
 ```javascript
 import yaml from "yaml";
 

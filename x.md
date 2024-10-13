@@ -4,15 +4,13 @@ This text here is ignored, just for documentation purposes.
 
 ## hello
 
-Prints "Hello" to `stdout` using Zsh.
+Prints "Hello" to `stdout` using ZSH.
 
 ```zsh
 echo "Hello"
 ```
 
 ## world
-
-Just prints "World" to `stdout` using JavaScript.
 
 ```js
 console.log("World");
