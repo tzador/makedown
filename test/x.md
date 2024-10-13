@@ -1,23 +1,24 @@
 # hello
 
-```js
-console.log("Hello, World!");
+```sh
+echo "Hello"
 ```
 
 # world
 
-```sh
-echo "Hello, World!"
+```js
+console.log("World");
 ```
 
-# again
+# generate-password
 
-```py
-print("Hello, World!");
-```
+```python
+import random
+import string
 
-# cowsay
+length = 16
 
-```zsh
-cowsay $1
+characters = string.ascii_letters + string.digits + string.punctuation
+password = ''.join(random.choice(characters) for _ in range(length))
+print(password)
 ```

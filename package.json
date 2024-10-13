@@ -14,5 +14,6 @@
     "scripts"
   ],
   "author": "Tim Zadorozhny <tzador@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "https://github.com/tzador/xfile"
 }
