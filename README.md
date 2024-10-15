@@ -1,4 +1,4 @@
-# x.md
+# makedown.sh
 
 `x.md` is a versatile CLI tool that lets you execute shell scripts,
 JavaScript code, and Python code from one or more markdown files.
@@ -15,68 +15,44 @@ and it features built-in syntax highlighting through markdown code blocks.
 ## Installation
 
 ```zsh
-npm install -g @tzador/x.md
+# TODO
 ```
 
 ## Usage
 
-Create a file named `x.md` in your project root, with the following example content:
-
-    <!-- /path/to/my/project/x.md -->
-    # Just a demo x.md file
-
-    This text here is ignored, just for documentation purposes.
-
-    ## hello
-
-    Prints "Hello" to `stdout` using Zsh.
-
-    ```zsh
-    echo "Hello"
-    ```
-
-    ## world
-
-    Just prints "World" to `stdout` using JavaScript.
-
-    ```js
-    console.log("World");
-    ```
-
-    ## weather-tomorrow
-
-    Prints the weather for tomorrow to `stdout` using Zsh.
-
-    ```zsh
-    curl wttr.in/tomorrow
-    ```
-
-    ## generate-password
-
-    Prints a random password to `stdout` using Python.
-
-    ```python
-    import random
-    import string
-
-    length = 16
-
-    characters = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(random.choice(characters) for _ in range(length))
-    print(password)
-    ```
-
-Run `x generate-password` to generate a random password.
-Similarly, you can run `x hello`, `x world` or `x weather-tomorrow` to see other examples.
-
-## Command line completions for ZSH
-
-Run the following once to add `x` command completions to your `.zshrc`:
-
-```zsh
-x --zsh-completion >> ~/.zshrc
+```
+# TODO
 ```
 
 Then restart your terminal.
 
 It will suggest available commands when you type `x` and press tab.
+
+# An example of a makedown file
+
+To define commands put them under a level 2 header or above while defining the command name.
+
+## `hello` Prints a greeting
+
+```
+#!/usr/bin/env bash
+echo "Hello, world!"
+```
+
+### File system helpers
+
+A set of handy file system helpers is available.
+
+### `dirsize` Prints the total size of a directory
+
+```
+#!/usr/bin/env bash
+du -sh "$1"
+```
+
+### `find-files` Finds files in a directory recursively
+
+```
+#!/usr/bin/env bash
+find "$1" -type f
+```
