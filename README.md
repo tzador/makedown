@@ -50,7 +50,7 @@ A set of handy file system helpers is available.
 du -sh "$1"
 ```
 
-### `find-files` Finds files in a directory recursively
+### `makedown find-files` # Finds files in a directory recursively
 
 ```
 #!/usr/bin/env bash
