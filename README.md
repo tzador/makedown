@@ -68,6 +68,31 @@ print("I run in python")
 console.log("I run in node");
 ```
 
+```
+#/usr/bin/env sh
+echo I run in sh
+```
+
+```
+#/usr/bin/env bash
+echo I run in bash
+```
+
+```
+#/usr/bin/env zsh
+echo I run in bash
+```
+
+```
+#/usr/bin/env python
+print("I run in python")
+```
+
+```
+#/usr/bin/env node
+console.log("I run in node");
+```
+
 ### Some handy helpers
 
 A set of handy file system helpers is available.
