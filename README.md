@@ -12,7 +12,19 @@ and it features built-in syntax highlighting through markdown code blocks.
 - Syntax Highlighting: Leverages markdown code blocks for readability.
 - Autocomplete Support: ZSH completions for a smoother workflow.
 
-## Installation
+## Install
+
+```zsh
+# TODO
+```
+
+## Update
+
+```zsh
+# TODO
+```
+
+## Uninstall
 
 ```zsh
 # TODO
@@ -32,7 +44,8 @@ It will suggest available commands when you type `x` and press tab.
 
 To define commands put them under a level 2 header or above while defining the command name.
 
----
+````markdown
+# DEMO.md
 
 Here are a few examples of commands:
 
@@ -68,22 +81,22 @@ print("I run in python")
 console.log("I run in node");
 ```
 
-```
+```sh
 #/usr/bin/env sh
 echo I run in sh
 ```
 
-```
+```bash
 #/usr/bin/env bash
 echo I run in bash
 ```
 
-```
+```zsh
 #/usr/bin/env zsh
 echo I run in bash
 ```
 
-```
+```python
 #/usr/bin/env python
 print("I run in python")
 ```
@@ -113,14 +126,5 @@ find "$1" -type f
 
 ```zsh
 kill -9 $(lsof -t -i:$1)
-```
-
----
-
-````markdown
-hello
-
-```
-world
 ```
 ````
