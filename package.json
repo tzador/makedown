@@ -1,13 +1,12 @@
 {
-  "name": "@tzador/x.md",
+  "name": "makedown.sh",
   "version": "0.0.3",
   "description": "Execute shell scripts, JavaScript code, and Python code defined in markdown files.",
   "bin": {
-    "x": "./bin/x"
+    "makedown.sh": "./makedown.sh"
   },
   "keywords": [
-    "xfile",
-    "x",
+    "makedown",
     "cli",
     "makefile",
     "markdown",
@@ -15,8 +14,5 @@
   ],
   "author": "Tim Zadorozhny <tzador@gmail.com>",
   "license": "MIT",
-  "repository": "https://github.com/tzador/x.md",
-  "devDependencies": {
-    "yaml": "^2.6.0"
-  }
+  "repository": "https://github.com/tzador/makedown.sh"
 }

@@ -43,14 +43,21 @@ echo "Hello, world!"
 
 A set of handy file system helpers is available.
 
-### `dirsize` Prints the total size of a directory
+### [dirsize]() Prints the total size of a directory
 
 ```
 #!/usr/bin/env bash
 du -sh "$1"
 ```
 
-### `makedown find-files` # Finds files in a directory recursively
+### [makedown.sh find-files]() Finds files in a directory recursively
+
+```
+#!/usr/bin/env bash
+find "$1" -type f
+```
+
+### `[makedown.sh find-files]()` Finds files in a directory recursively
 
 ```
 #!/usr/bin/env bash
