@@ -62,47 +62,24 @@ echo "Welcome to makedown.sh"
 When several tripple backtick code blocks are present, they are executed in order.
 
 ```sh
-echo I run in sh
+echo "I run in sh"
 ```
 
 ```bash
-echo I run in bash
+echo "I run in bash"
 ```
 
 ```zsh
-echo I run in bash
+echo "I run in zsh"
 ```
 
 ```python
+#!/opt/homebrew/bin/python
 print("I run in python")
 ```
 
 ```javascript
-console.log("I run in node");
-```
-
-```sh
-#/usr/bin/env sh
-echo I run in sh
-```
-
-```bash
-#/usr/bin/env bash
-echo I run in bash
-```
-
-```zsh
-#/usr/bin/env zsh
-echo I run in bash
-```
-
-```python
-#/usr/bin/env python
-print("I run in python")
-```
-
-```
-#/usr/bin/env node
+#!/opt/homebrew/bin/node
 console.log("I run in node");
 ```
 

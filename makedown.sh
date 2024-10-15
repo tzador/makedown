@@ -7,6 +7,7 @@
 # colored output
 # correct line numbers in error messages
 # correct file paths in error messages
+# when hashbang is present, use that
 
 import time
 import sys
