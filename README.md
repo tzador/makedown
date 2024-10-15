@@ -36,13 +36,39 @@ To define commands put them under a level 2 header or above while defining the c
 
 Here are a few examples of commands:
 
-## [hello]() Prints a greeting
+## [welcome]() Welcome message
+
+By default bash is used as interpreter for the commands.
 
 ```
-echo "Hello, world!"
+echo "Welcome to makedown.sh"
 ```
 
-### File system helpers
+## [interpreter-chain]() Choose a specific interpreter
+
+When several tripple backtick code blocks are present, they are executed in order.
+
+```sh
+echo I run in sh
+```
+
+```bash
+echo I run in bash
+```
+
+```zsh
+echo I run in bash
+```
+
+```python
+print("I run in python")
+```
+
+```javascript
+console.log("I run in node");
+```
+
+### Some handy helpers
 
 A set of handy file system helpers is available.
 
@@ -58,12 +84,8 @@ du -sh "$1"
 find "$1" -type f
 ```
 
-## [several-scripts]() Several scripts
+### [kill-port]() Kills a process listening on a port
 
-```sh
-echo hello
-```
-
-```
-echo world
+```zsh
+kill -9 $(lsof -t -i:$1)
 ```
