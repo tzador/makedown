@@ -32,6 +32,10 @@ It will suggest available commands when you type `x` and press tab.
 
 To define commands put them under a level 2 header or above while defining the command name.
 
+---
+
+Here are a few examples of commands:
+
 ## [hello]() Prints a greeting
 
 ```
@@ -63,15 +67,3 @@ echo hello
 ```
 echo world
 ```
-
-#
-
-## TODO
-
-- [ ] `$ makedown --help-server` to start a local web server with the help docs
-- [ ] Add a way to run commands from a specific line number
-- [ ] Add a way to run commands from a specific code block
-- [ ] Add a way to run commands from a specific code block
-- [ ] Add a way to run commands from a specific code block
-- [ ] Add a way to run commands from a specific code block
-- [ ] Add a way to run commands from a specific code block
