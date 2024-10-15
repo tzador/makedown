@@ -105,3 +105,33 @@ find "$1" -type f
 kill -9 $(lsof -t -i:$1)
 ```
 ````
+
+---
+
+hello
+
+#
+
+world
+
+## details
+
+<details>
+<summary>Details</summary>
+some `markdown` *here* **strong**.
+```rust
+fn fibonacci(n: u32) -> u64 {
+    if n <= 1 {
+        return n as u64;
+    }
+    let mut a = 0;
+    let mut b = 1;
+    for _ in 2..=n {
+        let temp = a + b;
+        a = b;
+        b = temp;
+    }
+    b
+}
+```
+</details>

@@ -8,6 +8,7 @@
 # correct line numbers in error messages
 # correct file paths in error messages
 # when hashbang is present, use that
+# do not show in --help the commands that start with _
 
 import time
 import sys
