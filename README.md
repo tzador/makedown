@@ -23,7 +23,7 @@ This is a fresh project still under active development.
 Feel free to open and [issue](https://github.com/tzador/makedown/issues) or
 [PR](https://github.com/tzador/makedown/pulls).
 
-We also have have a [Discord server](https://discord.gg/Gcr9H897zD) for quick
+We also have have a [Discord](https://discord.gg/Gcr9H897zD) server for quick
 discussions and sharing ideas or feedback.
 
 ---

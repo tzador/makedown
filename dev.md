@@ -16,7 +16,6 @@ pip install wheel
 pip install twine
 pip install black
 pip install python-dotenv
-pip freeze > requirements.txt
 ```
 
 ## [format]() Format the source code
