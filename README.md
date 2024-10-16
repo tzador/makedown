@@ -1,38 +1,91 @@
-# makedown - A Markdown powered Makefile alternative
+# [makedown](https://github.com/tzador/makedown) A Markdown powered Makefile alternative
+
+`makedown` (aka Makefile + Markdown) is motivated by developers need to define
+multiple scripts in one file next to their documentation, and have a handy way to
+trigger them from terminal.
+
+`Makefile`s are great for this, but are lucking some of the [`makedown`](https://github.com/tzador/makedown) features,
+such as syntax highlighting, hierarchical scanning and embedded documentation.
+
+There are also `package.json` scripts in `node.js` world, but users are forced to write script commands in one line.
+
+It is implemented in Python for portability reasons, since most Unix-like systems
+already have a Python interpreter installed.
+
+## Key Features
+
+- [x] **Executable Markdown Scripting**: Use markdown files (.md) to organize commands and their documentation.
+- [x] **Multilingual Execution**: Supports `zsh`, `bash`, `javascript`, `python` and **infinitely** many more.
+- [x] **Syntax Highlighting**: Leverages markdown code blocks for readability.
+- [x] **Flexible Code Blocks**: Support for triple backtick code blocks.
+- [ ] **Autocomplete Support**: ZSH completions for a smoother workflow.
+
+## How to use
+
+### Install
 
 ```bash
 pip install makedown
 ```
 
-`makedown` is a versatile CLI tool that lets you execute shell scripts,
-JavaScript code, Python code, or any other script defined in one or more markdown files.
+### Define commands in a markdown file
 
-It's a streamlined alternative to `Makefile`, `package.json`, or scattered shell scripts,
-featuring built-in syntax highlighting through markdown code blocks and
-allowing documentation of commands in a human-friendly format.
+````markdown
+# my_scripts.md
 
-## Key Features
+Here are a few examples of commands:
 
-- **Multilingual Execution**: Supports Zsh, JavaScript, and Python.
-- **Simplified Scripting**: Use markdown files (.md) to organize and run commands.
-- **Syntax Highlighting**: Leverages markdown code blocks for readability.
-- **Autocomplete Support**: ZSH completions for a smoother workflow.
-- **Flexible Code Blocks**: Support for triple backtick code blocks.
-
-## Installation
-
-## Usage
-
-1. Define and document your commands in a markdown file, like in [DEMO.md](./DEMO.md).
-2. Run commands using `makedown` from the same directory or any subdirectory:
+## [hello]() Prints a welcome message
 
 ```bash
-makedown --help  # Prints help with available commands
-makedown         # Also prints help
+echo "hello, world!"
+```
+````
 
-makedown my_command           # Runs the command
-makedown my_command arg1 arg2 # Pass arguments to the command
-makedown my_command --help    # Prints help for the command
+### Executing commands
+
+To run commands in a markdown file, execute `makedown` from the same directory or any subdirectory:
+
+```bash
+makedown hello
+```
+
+A shorter version is also available:
+
+```bash
+m hello
+```
+
+### Printing help
+
+To see all the available commands with their documentation, use one of the following:
+
+```bash
+makedown --help
+```
+
+or just run it without any arguments:
+
+```bash
+makedown # just `m` also works
+```
+
+### Using other languages
+
+```python
+print("hello, world!")
+```
+
+### Upgrade
+
+```bash
+pip install --upgrade makedown
+```
+
+### Uninstall
+
+```bash
+pip uninstall makedown
 ```
 
 ## Development

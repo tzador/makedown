@@ -17,7 +17,15 @@ alias_to_interpreter = {
     "javascript": "node",
     "py": "python",
     "python": "python",
-    # TODO: add more aliases, like deno, bun, etc.
+    "rb": "ruby",
+    "ruby": "ruby",
+    "pl": "perl",
+    "perl": "perl",
+    "php": "php",
+    "lua": "lua",
+    "tcl": "tclsh",
+    # "awk": "awk -f",
+    # "sed": "sed -f",
 }
 
 interpreter_to_extension = {
@@ -26,6 +34,11 @@ interpreter_to_extension = {
     "bash": "bash",
     "node": "mjs",
     "python": "py",
+    "ruby": "rb",
+    "perl": "pl",
+    "php": "php",
+    "lua": "lua",
+    "tclsh": "tcl",
 }
 
 
