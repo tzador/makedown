@@ -1,4 +1,4 @@
-# makedown
+# `makedown` = A `Markdown` based `Makefile` alternative
 
 `makedown` is a versatile CLI tool that lets you execute shell scripts,
 JavaScript code, Python code, or any other script defined in one or more markdown files.
