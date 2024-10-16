@@ -5,8 +5,9 @@ import subprocess
 
 
 def execute(*command):
-    result = subprocess.run(["../makedown.py"] + list(command),
-                            capture_output=True, text=True)
+    result = subprocess.run(
+        ["../makedown.py"] + list(command), capture_output=True, text=True
+    )
     return result.returncode, result.stdout, result.stderr
 
 

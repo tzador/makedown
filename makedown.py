@@ -5,7 +5,7 @@ import sys
 import re
 import os
 
-version = "0.0.1"
+version = "0.0.2"
 
 alias_to_interpreter = {
     "": "bash",
@@ -24,21 +24,6 @@ alias_to_interpreter = {
     "php": "php",
     "lua": "lua",
     "tcl": "tclsh",
-    # "awk": "awk -f",
-    # "sed": "sed -f",
-}
-
-interpreter_to_extension = {
-    "zsh": "zsh",
-    "sh": "sh",
-    "bash": "bash",
-    "node": "mjs",
-    "python": "py",
-    "ruby": "rb",
-    "perl": "pl",
-    "php": "php",
-    "lua": "lua",
-    "tclsh": "tcl",
 }
 
 
@@ -141,12 +126,15 @@ def print_command_help(command_name):
     for file in find_md_files():
         commands = parse_md_file(file)
         for command in commands:
-            if command.name == command_name:
-                print("@", file)
-                print()
-                print(command.source)
-                print()
-                return
+            if command.name != command_name:
+                continue
+
+            print(green("@ " + file))
+            print()
+            print(command.source)
+            print()
+            return
+
     print(red(f"Unknown command '{command_name}'"), file=sys.stderr)
 
 
@@ -159,16 +147,15 @@ def execute_command(command):
 
         interpreter = alias_to_interpreter.get(alias)
 
-        if not interpreter:
+        if not interpreter and not script.startswith("#!"):
             print(red(f"Unknown interpreter for '{alias}'"), file=sys.stderr)
             return
 
-        extension = interpreter_to_extension[interpreter]
-
-        executable = command.file + "." + str(time.time()) + "." + extension
+        executable = command.file + "." + str(time.time())
 
         with open(executable, "w") as f:
-            f.write("#!/usr/bin/env " + interpreter + "\n")
+            if not script.startswith("#!"):
+                f.write("#!/usr/bin/env " + interpreter + "\n")
             f.write(script)
 
         os.chmod(executable, 0o755)
@@ -177,6 +164,7 @@ def execute_command(command):
             os.system(executable + " " + " ".join(sys.argv[1:]))
         finally:
             os.remove(executable)
+            pass
 
 
 def main():

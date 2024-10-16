@@ -14,6 +14,8 @@ source venv/bin/activate
 
 pip install --upgrade pip
 pip install setuptools wheel twine black
+
+pip freeze > requirements.txt
 ```
 
 ---
@@ -52,12 +54,12 @@ python setup.py sdist bdist_wheel
 
 ---
 
-## [publish]() Publish the package to PyPI
+## [pypi]() Publish the package to PyPI
 
 ```bash
 source venv/bin/activate
 
-makedown build
+./makedown.py build # Use local makedown
 twine upload dist/*
 ```
 
