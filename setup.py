@@ -24,4 +24,5 @@ setup(
         "Operating System :: POSIX",
     ],
     python_requires='>=3',
+    license_files=('LICENSE',),
 )

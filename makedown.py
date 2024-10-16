@@ -12,7 +12,7 @@
 # when command is misstyped, output the similar available commands
 # allow ~/makdown.md file to specify global commands
 # add a man page
-# print license with --license
+# --license
 # use `.env` files
 # add a --version flag
 # add a --debug flag

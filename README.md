@@ -1,9 +1,11 @@
 # makedown
 
 `makedown` is a versatile CLI tool that lets you execute shell scripts,
-JavaScript code, and Python code from one or more markdown files.
-It's a streamlined alternative to `Makefile` or `package.json` scripts,
-and it features built-in syntax highlighting through markdown code blocks.
+JavaScript code, Python code, or any other script defined in one or more markdown files.
+
+It's a streamlined alternative to `Makefile`, `package.json` or scattered shell scripts,
+and it features built-in syntax highlighting through markdown code blocks and
+allows documenting commands in a human-friendly format.
 
 ## Key Features
 
@@ -13,7 +15,7 @@ and it features built-in syntax highlighting through markdown code blocks.
 - Autocomplete Support: ZSH completions for a smoother workflow.
 - support tripple backtick code blocks
 
-## Install
+## Installation
 
 ```bash
 pip install makedown
@@ -21,7 +23,7 @@ pip install makedown
 
 ## Usage
 
-Define and document your commands in a markdown file, like [DEMO.md](./DEMO.md).
+Define and document your commands in a markdown file, like in [DEMO.md](./DEMO.md).
 
 Then use `makedown` to run them, from within the same directory or any subdirectory.
 
@@ -35,6 +37,8 @@ $ makedown my_command --help # Prints help for the command
 ```
 
 ## Development
+
+These are actually `makedown` commands.
 
 ### [dev:venv:create]() Creates a virtual environment.
 
