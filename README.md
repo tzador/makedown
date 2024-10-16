@@ -2,11 +2,11 @@
 
 `makedown` (aka Makefile + Markdown) is motivated by developers need to define
 multiple scripts in one file next to their documentation, and have a handy way
-to trigger them from terminal.
+to run them from terminal.
 
 `Makefile`s are great for this, but are lucking some of the
 [`makedown`](https://github.com/tzador/makedown) features, such as syntax
-highlighting, hierarchical scanning and embedded documentation.
+highlighting, hierarchical scanning of .md files with embedded documentation.
 
 There are also `package.json` scripts in `node.js` world, but users are forced
 to write script commands in one line.
@@ -14,39 +14,61 @@ to write script commands in one line.
 It is implemented in Python for portability reasons, since most Unix-like
 systems already have a Python interpreter installed.
 
+Here is [DEMO.md](./DEMO.md) file with examples of usage.
+
+---
+
+This is a fresh project still under active development.
+
+Feel free to open and [issue](https://github.com/tzador/makedown/issues) or
+[PR](https://github.com/tzador/makedown/pulls).
+
+We also have have a [Discord server](https://discord.gg/Gcr9H897zD) for quick
+discussions and sharing ideas or feedback.
+
+---
+
 ## Key Features
 
-- [x] **Executable Markdown Scripting**: Use markdown files (.md) to organize
-      commands and their documentation.
-- [x] **Multilingual Execution**: Supports `zsh`, `bash`, `javascript`, `python`
-      and **infinitely** many more.
-- [x] **Syntax Highlighting**: Leverages markdown code blocks for readability.
-- [x] **Flexible Code Blocks**: Support for triple backtick code blocks.
-- [ ] **Autocomplete Support**: ZSH completions for a smoother workflow.
+- **Executable Markdown Scripting**: Use markdown files (.md) to organize
+  commands and their documentation.
+- **Multilingual Execution**: Supports `zsh`, `bash`, `javascript`, `python`
+  and **infinitely** many more, using custom hashbangs.
+- **Syntax Highlighting**: Leverages markdown code blocks for readability.
 
-## How to use
+---
 
-### Install
+## Install:
 
 ```bash
 pip install makedown
 ```
 
-### Define commands in a `.md` file
+## Use
+
+Define commands in a `.md` file:
 
 ````markdown
 # my_scripts.md
 
 Here are a few examples of commands:
 
-## [hello]() Prints a welcome message
+## [hello]() Prints "hello" using bash
 
 ```bash
-echo "hello, world!"
+echo "hello"
+```
+
+## [world]() Prints "world" using python
+
+This is a more detailed description of the command.
+
+```python
+#!/usr/bin/env python
+
+echo "world"
 ```
 ````
-
-### Executing commands
 
 To run commands in a markdown file, execute `makedown` from the same directory
 or any subdirectory:
@@ -58,12 +80,10 @@ makedown hello
 A shorter version is also available:
 
 ```bash
-m hello
+m world
 ```
 
-### Printing help
-
-To see all the available commands with their documentation, use one of the
+To see all the available commands with their short descriptions, use one of the
 following:
 
 ```bash
@@ -73,16 +93,22 @@ makedown --help
 or just run it without any arguments:
 
 ```bash
-makedown # just `m` also works
+m
 ```
 
-### Upgrade
+To get more details about a specific command, use:
+
+```bash
+makedown world --help
+```
+
+## Upgrade
 
 ```bash
 pip install --upgrade makedown
 ```
 
-### Uninstall
+## Uninstall:
 
 ```bash
 pip uninstall makedown
