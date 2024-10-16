@@ -1,6 +1,8 @@
-# makedown
+# makedown - A Markdown powered Makefile alternative
 
-A `Markdown`-based `Makefile` alternative, written in `Python`.
+```bash
+pip install makedown
+```
 
 `makedown` is a versatile CLI tool that lets you execute shell scripts,
 JavaScript code, Python code, or any other script defined in one or more markdown files.
@@ -18,10 +20,6 @@ allowing documentation of commands in a human-friendly format.
 - **Flexible Code Blocks**: Support for triple backtick code blocks.
 
 ## Installation
-
-```bash
-pip install makedown
-```
 
 ## Usage
 
@@ -41,32 +39,41 @@ makedown my_command --help    # Prints help for the command
 
 These are actual `makedown` commands:
 
-### [dev:venv:create]() Create a virtual environment
+### [venv]() Create a virtual environment
 
 ```bash
 python3 -m venv venv
+source venv/bin/activate && pip install --upgrade pip
 ```
 
-### [dev:venv:activate]() Activate the virtual environment
+### Activate the virtual environment manually everytime you start a new shell
 
 ```bash
 source venv/bin/activate
 ```
 
-### [dev:install]() Install Python dependencies
+### [install]() Install Python dependencies
 
 ```bash
-pip install setuptools wheel twine
+pip install setuptools wheel twine black
 ```
 
-### [dev:build]() Build the package
+### [format]() Format the source code
 
 ```bash
+black makedown.py
+```
+
+### [build]() Build the package
+
+```bash
+rm -rf build dist makedown.egg-info
 python setup.py sdist bdist_wheel
 ```
 
-### [dev:publish]() Publish the package to PyPI
+### [publish]() Publish the package to PyPI
 
 ```bash
+makedown build
 twine upload dist/*
 ```

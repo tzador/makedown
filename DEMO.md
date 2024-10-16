@@ -2,7 +2,7 @@
 
 Here are a few examples of commands:
 
-## [welcome]() Welcome message
+## [welcome]() Prints a welcome message
 
 By default bash is used as interpreter for the commands.
 

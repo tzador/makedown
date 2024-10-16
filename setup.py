@@ -1,12 +1,14 @@
 from setuptools import setup
+import makedown
 
 setup(
     name="makedown",
-    version="0.0.0",
+    version=makedown.version,
     py_modules=['makedown'],
     entry_points={
         'console_scripts': [
             'makedown=makedown:main',
+            'm=makedown:main',
         ],
     },
     install_requires=[
@@ -14,7 +16,7 @@ setup(
     ],
     author="Tim Zadorozhny",
     author_email="tzador@gmail.com",
-    description="A CLI utility to execute scripts from within markdown files.",
+    description="A Markdown-based Makefile alternative.",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     url="https://github.com/tzador/makedown",
