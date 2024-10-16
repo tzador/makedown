@@ -10,12 +10,19 @@
 # when hashbang is present, use that
 # do not show in --help the commands that start with _
 # when command is misstyped, output the similar available commands
+# allow ~/makdown.md file to specify global commands
+# add a man page
+# print license with --license
+# use `.env` files
+# add a --version flag
+# add a --debug flag
+# add a --no-color flag
+# add
 
 import time
 import sys
 import re
 import os
-
 
 alias_to_interpreter = {
     "": "bash",
@@ -72,7 +79,7 @@ def parse_md_file(file):
     with open(file, 'r') as f:
         lines = [line.rstrip() for line in f.read().splitlines()]
         for line_number, line in enumerate(lines):
-            match = re.match(r'^#+\s\[([a-zA-Z0-9_-]+)\]\(\)(.*$)', line)
+            match = re.match(r'^#+\s\[([^\]]+)\]\(\)(.*$)', line)
 
             if not match:
                 continue
@@ -99,7 +106,7 @@ def print_help():
         commands = parse_md_file(file)
         if len(commands) == 0:
             continue
-        print('@', file)
+        print('@  ', file)
         print()
         for command in commands:
             print('    ' + command.name + ' ' *

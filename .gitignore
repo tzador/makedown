@@ -1,2 +1,6 @@
 .DS_Store
+build
+dist
+makedown.egg-info
 node_modules
+venv

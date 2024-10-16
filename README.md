@@ -1,6 +1,6 @@
-# makedown.sh
+# makedown
 
-`makedown.sh` is a versatile CLI tool that lets you execute shell scripts,
+`makedown` is a versatile CLI tool that lets you execute shell scripts,
 JavaScript code, and Python code from one or more markdown files.
 It's a streamlined alternative to `Makefile` or `package.json` scripts,
 and it features built-in syntax highlighting through markdown code blocks.
@@ -16,107 +16,52 @@ and it features built-in syntax highlighting through markdown code blocks.
 ## Install
 
 ```bash
-npm install -g makedown.sh
+pip install makedown
 ```
 
 ## Usage
 
 Define and document your commands in a markdown file, like [DEMO.md](./DEMO.md).
 
-Then use `makedown.sh` to run them, from within the same directory or any subdirectory.
+Then use `makedown` to run them, from within the same directory or any subdirectory.
 
 ```bash
-makedown.sh --help # Prints help with available commands
-makedown.sh # Also prints help
+$ makedown --help # Prints help with available commands
+$ makedown # Also prints help
 
-makedown.sh my_command # Runs the command
-makedown.sh my_command arg1 arg2 # Pass arguments to the command
-makedown.sh my_command --help # Prints help for the command
+$ makedown my_command # Runs the command
+$ makedown my_command arg1 arg2 # Pass arguments to the command
+$ makedown my_command --help # Prints help for the command
 ```
 
-## DEMO.md
+## Development
 
-````markdown
-# DEMO.md
-
-Here are a few examples of commands:
-
-## [welcome]() Welcome message
-
-By default bash is used as interpreter for the commands.
-
-```
-echo "Welcome to makedown.sh"
-```
-
-## [interpreter-chain]() Choose a specific interpreter
-
-When several code blocks are present, they are executed in order.
-
-```sh
-echo "step 1: I run in sh"
-```
+### [dev:venv:create]() Creates a virtual environment.
 
 ```bash
-echo "step 2: I run in bash"
+python3 -m venv venv
 ```
 
-```zsh
-echo "step 3: I run in zsh"
-```
-
-```python
-#!/opt/homebrew/bin/python
-print("step 4: I run in python")
-```
-
-```javascript
-#!/opt/homebrew/bin/node
-console.log("step 5: I run in node");
-```
-
-### Some handy helpers
-
-A set of handy file system helpers is available.
-
-### [dirsize]() Prints the total size of a directory
+### Activate the virtual environment.
 
 ```bash
-du -sh "$1"
+source venv/bin/activate
 ```
 
-### [find-files]() Finds files in a directory recursively
+### [dev:install]() Installs python dependencies.
 
-```zsh
-find "$1" -type f
+```bash
+pip install setuptools wheel twine
 ```
 
-### [kill-port]() Kills a process listening on a port
+### [dev:build]() Builds the package.
 
-```zsh
-kill -9 $(lsof -t -i:$1)
+```bash
+python setup.py sdist bdist_wheel
 ```
 
+### [dev:publish]() Publishes the package to pypi.
+
+```bash
+twine upload dist/*
 ```
-#!/usr/bin/env ruby
-
-def is_prime?(number)
-  return false if number <= 1
-  (2..Math.sqrt(number)).none? { |i| number % i == 0 }
-end
-
-def first_n_primes(n)
-  primes = []
-  number = 2
-  while primes.length < n
-    primes << number if is_prime?(number)
-    number += 1
-  end
-  primes
-end
-
-# Print the first 100 prime numbers
-first_100_primes = first_n_primes(100)
-puts first_100_primes
-```
-````
