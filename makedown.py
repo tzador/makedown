@@ -5,7 +5,7 @@ import sys
 import re
 import os
 
-version = "0.0.2"
+version = "0.0.3"
 
 alias_to_interpreter = {
     "": "bash",
