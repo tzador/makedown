@@ -5,7 +5,7 @@ import sys
 import re
 import os
 
-version = "0.0.3"
+version = "0.0.4"
 
 alias_to_interpreter = {
     "": "bash",
@@ -143,7 +143,6 @@ def print_help():
                 (" " + " " * (max_length - len(command.name))+"    # " +
                  command.description if command.description else ""),
             )
-            print(command.dependencies)
         print()
 
 
@@ -218,6 +217,10 @@ def execute_command(command):
 def main():
     if len(sys.argv) == 1 or sys.argv[1] == "--help":
         print_help()
+        return
+
+    if len(sys.argv) >= 2 and sys.argv[1] == "--version":
+        print("makedown:" + version)
         return
 
     if len(sys.argv) == 3 and sys.argv[2] == "--help":
