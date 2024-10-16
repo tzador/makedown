@@ -11,7 +11,7 @@ and it features built-in syntax highlighting through markdown code blocks.
 - Simplified Scripting: Use markdown files (.md) to organize and run commands.
 - Syntax Highlighting: Leverages markdown code blocks for readability.
 - Autocomplete Support: ZSH completions for a smoother workflow.
-- support tripple backtick code blocks
+- Support triple backtick code blocks
 
 ## Install
 
