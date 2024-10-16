@@ -96,4 +96,27 @@ find "$1" -type f
 ```zsh
 kill -9 $(lsof -t -i:$1)
 ```
+
+```
+#!/usr/bin/env ruby
+
+def is_prime?(number)
+  return false if number <= 1
+  (2..Math.sqrt(number)).none? { |i| number % i == 0 }
+end
+
+def first_n_primes(n)
+  primes = []
+  number = 2
+  while primes.length < n
+    primes << number if is_prime?(number)
+    number += 1
+  end
+  primes
+end
+
+# Print the first 100 prime numbers
+first_100_primes = first_n_primes(100)
+puts first_100_primes
+```
 ````
