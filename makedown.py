@@ -5,7 +5,7 @@ import sys
 import re
 import os
 
-version = "0.0.4"
+version = "0.0.7"
 
 alias_to_interpreter = {
     "": "bash",
@@ -80,7 +80,9 @@ def find_md_files():
 
 
 class Command:
-    def __init__(self, file, level, name, dependencies, description, source, line_number):
+    def __init__(
+        self, file, level, name, dependencies, description, source, line_number
+    ):
         self.file = file
         self.level = level
         self.name = name
@@ -122,7 +124,7 @@ def print_help():
     max_length = 0
     for file in find_md_files():
         for command in parse_md_file(file):
-            if (command.name[0] == '-'):
+            if command.name[0] == "-":
                 continue
             max_length = max(max_length, len(command.name))
 
@@ -135,13 +137,19 @@ def print_help():
         print(blue(file))
         print()
         for command in commands:
-            if (command.name[0] == '-'):
+            if command.name[0] == "-":
                 continue
             print(
                 "$",
-                green("makedown " + command.name) +
-                (" " + " " * (max_length - len(command.name))+"    # " +
-                 command.description if command.description else ""),
+                green("makedown " + command.name)
+                + (
+                    " "
+                    + " " * (max_length - len(command.name))
+                    + "    # "
+                    + command.description
+                    if command.description
+                    else ""
+                ),
             )
         print()
 
@@ -179,8 +187,11 @@ def execute_dependencies(command, executed_commands=None):
                     continue
                 break
             else:
-                print(red(f"Dependency '{dep}' not found for command '{
-                      command.name}'"), file=sys.stderr)
+                print(
+                    red("Dependency " + dep +
+                        " not found for command " + command.name),
+                    file=sys.stderr,
+                )
 
 
 def execute_command(command):
@@ -220,7 +231,7 @@ def main():
         return
 
     if len(sys.argv) >= 2 and sys.argv[1] == "--version":
-        print("makedown:" + version)
+        print("makedown-" + version)
         return
 
     if len(sys.argv) == 3 and sys.argv[2] == "--help":

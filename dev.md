@@ -56,14 +56,10 @@ source venv/bin/activate
 twine upload dist/*
 ```
 
-# [eee]() EEE
+## [upgrade]() Upgrade the local installation
 
 ```bash
-export HELLO=WORLD
-
-echo $HELLO
-```
-
-```bash
-echo hello=$HELLO
+cd ~
+pip uninstall makedown -y
+pip install makedown
 ```

@@ -40,14 +40,17 @@ class Test(unittest.TestCase):
     def test_help(self):
         status, stdout, stderr = execute_in_help("--help")
         self.assertEqual(status, 0)
-        self.assertEqual(stdout, f"""
+        self.assertEqual(
+            stdout,
+            f"""
 {os.getcwd()}/help/help.md
 
 $ makedown uno     # Uno
 $ makedown duo     # Duo
 $ makedown tre
 
-""")
+""",
+        )
         self.assertEqual(stderr, "")
 
 
