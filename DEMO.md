@@ -24,14 +24,11 @@ echo "step 2: I run in bash"
 echo "step 3: I run in zsh"
 ```
 
-```python
-#!/opt/homebrew/bin/python
-print("step 4: I run in python")
-```
+```typescript
+#!/usr/bin/env deno
 
-```javascript
-#!/opt/homebrew/bin/node
-console.log("step 5: I run in node");
+const message: string = "step 4: I run in deno";
+console.log(message);
 ```
 
 ### Some handy helpers

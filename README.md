@@ -76,12 +76,6 @@ or just run it without any arguments:
 makedown # just `m` also works
 ```
 
-### Using other languages
-
-```python
-print("hello, world!")
-```
-
 ### Upgrade
 
 ```bash
