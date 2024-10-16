@@ -27,19 +27,30 @@ alias_to_interpreter = {
 }
 
 
+NO_COLOR = os.environ.get("MAKEDOWN_NO_COLOR") == "TRUE"
+
+
 def red(text):
+    if NO_COLOR:
+        return text
     return f"\033[91m{text}\033[0m"
 
 
 def green(text):
+    if NO_COLOR:
+        return text
     return f"\033[92m{text}\033[0m"
 
 
 def blue(text):
+    if NO_COLOR:
+        return text
     return f"\033[94m{text}\033[0m"
 
 
 def yellow(text):
+    if NO_COLOR:
+        return text
     return f"\033[93m{text}\033[0m"
 
 
@@ -50,9 +61,14 @@ def find_md_files():
         files = os.listdir(current_dir)
         files.sort()
 
+        found = False
         for file in files:
             if file.lower().endswith(".md"):
                 yield os.path.abspath(os.path.join(current_dir, file))
+                found = True
+
+        if found and os.environ.get("MAKEDOWN_NO_WALK") == "TRUE":
+            break
 
         parent_dir = os.path.dirname(current_dir)
         if parent_dir == current_dir:
@@ -102,6 +118,8 @@ def print_help():
     max_length = 0
     for file in find_md_files():
         for command in parse_md_file(file):
+            if (command.name[0] == '-'):
+                continue
             max_length = max(max_length, len(command.name))
 
     print()
@@ -112,12 +130,13 @@ def print_help():
         print(blue(file))
         print()
         for command in commands:
+            if (command.name[0] == '-'):
+                continue
             print(
                 "$",
-                green("makedown " + command.name)
-                + " " * (max_length - len(command.name)),
-                "   ",
-                "# " + command.title,
+                green("makedown " + command.name) +
+                (" " + " " * (max_length - len(command.name))+"    # " +
+                 command.title if command.title else ""),
             )
         print()
 

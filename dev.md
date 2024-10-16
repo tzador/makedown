@@ -38,7 +38,7 @@ source venv/bin/activate
 
 cd tests
 
-python test.py
+MAKEDOWN_NO_WALK=TRUE MAKEDOWN_NO_COLOR=TRUE python test.py
 ```
 
 ---

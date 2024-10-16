@@ -32,8 +32,8 @@ discussions and sharing ideas or feedback.
 
 - **Executable Markdown Scripting**: Use markdown files (.md) to organize
   commands and their documentation.
-- **Multilingual Execution**: Supports `zsh`, `bash`, `javascript`, `python`
-  and **infinitely** many more, using custom hashbangs.
+- **Multilingual Execution**: Supports `zsh`, `bash`, `javascript`, `python` and
+  **infinitely** many more, using custom hashbangs.
 - **Syntax Highlighting**: Leverages markdown code blocks for readability.
 
 ---
