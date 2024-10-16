@@ -128,7 +128,8 @@ def print_help():
         print()
         for command in commands:
             print(
-                green("makefile " + command.name)
+                "$",
+                green("makedown " + command.name)
                 + " " * (max_length - len(command.name)),
                 "   ",
                 "# " + command.title,

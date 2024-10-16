@@ -32,7 +32,7 @@ systems already have a Python interpreter installed.
 pip install makedown
 ```
 
-### Define commands in a markdown file
+### Define commands in a `.md` file
 
 ````markdown
 # my_scripts.md
