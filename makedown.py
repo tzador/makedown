@@ -1,24 +1,5 @@
 #!/usr/bin/env python
 
-# TODO
-
-# `$ makedown - -help-server` to start a local web server with the help docs
-# bash/zsh completions
-# colored output
-# correct line numbers in error messages
-# correct file paths in error messages
-# when hashbang is present, use that
-# do not show in --help the commands that start with _
-# when command is misstyped, output the similar available commands
-# allow ~/makdown.md file to specify global commands
-# add a man page
-# --license
-# use `.env` files
-# add a --version flag
-# add a --debug flag
-# add a --no-color flag
-# add
-
 import time
 import sys
 import re
