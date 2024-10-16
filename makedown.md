@@ -1,34 +1,64 @@
-# dev scripts
+# Scripts for `makedown` development
 
 These scripts are used to develop `makedown`.
 
-## [environment]() Create a virtual environment and install dependencies
+---
 
-````bash
-    rm -rf venv
-    python3 -m venv venv
-    source venv/bin/activate && pip install --upgrade pip
-    source venv/bin/activate && pip install setuptools wheel twine black
-    npm install --global prettier
+## [venv]() Create a virtual environment and install dependencies
 
+```bash
+rm -rf venv
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install --upgrade pip
+pip install setuptools wheel twine black
+```
+
+---
 
 ## [format]() Format the source code
 
 ```bash
+source venv/bin/activate
+
 black makedown.py tests
-prettier --print-width 80 --prose-wrap always --write "**/*.md"
-````
+npx prettier --print-width 80 --prose-wrap always --write "**/*.md"
+```
+
+---
+
+## [test]() Run the tests
+
+```bash
+source venv/bin/activate
+
+cd tests
+
+python test.py
+```
+
+---
 
 ## [build]() Build PyPI package
 
 ```bash
+source venv/bin/activate
+
 rm -rf build dist makedown.egg-info
 python setup.py sdist bdist_wheel
 ```
 
+---
+
 ## [publish]() Publish the package to PyPI
 
 ```bash
+source venv/bin/activate
+
 makedown build
 twine upload dist/*
 ```
+
+---
