@@ -1,3 +1,13 @@
+---
+cwd: .
+env:
+  - name: FOO
+    value: BAR
+  - file: .env
+---
+
+# Demo makedown file
+
 Here are a few examples of commands:
 
 ## [welcome]() Prints a welcome message
