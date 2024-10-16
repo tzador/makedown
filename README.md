@@ -38,7 +38,7 @@ discussions and sharing ideas or feedback.
 
 ---
 
-## Install:
+## Install
 
 ```bash
 pip install makedown
@@ -108,7 +108,7 @@ makedown world --help
 pip install --upgrade makedown
 ```
 
-## Uninstall:
+## Uninstall
 
 ```bash
 pip uninstall makedown
