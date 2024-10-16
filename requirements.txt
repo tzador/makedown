@@ -10,7 +10,6 @@ jaraco.context==6.0.1
 jaraco.functools==4.1.0
 keyring==25.4.1
 markdown-it-py==3.0.0
-markdown2==2.5.1
 mdurl==0.1.2
 more-itertools==10.5.0
 mypy-extensions==1.0.0
@@ -20,6 +19,7 @@ pathspec==0.12.1
 pkginfo==1.10.0
 platformdirs==4.3.6
 Pygments==2.18.0
+python-dotenv==1.0.1
 readme_renderer==44.0
 requests==2.32.3
 requests-toolbelt==1.0.0

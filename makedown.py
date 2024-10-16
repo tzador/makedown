@@ -27,7 +27,9 @@ alias_to_interpreter = {
 }
 
 
+DEBUG = os.environ.get("MAKEDOWN_DEBUG") == "TRUE"
 NO_COLOR = os.environ.get("MAKEDOWN_NO_COLOR") == "TRUE"
+NO_WALK = os.environ.get("MAKEDOWN_NO_WALK") == "TRUE"
 
 
 def red(text):
@@ -67,7 +69,7 @@ def find_md_files():
                 yield os.path.abspath(os.path.join(current_dir, file))
                 found = True
 
-        if found and os.environ.get("MAKEDOWN_NO_WALK") == "TRUE":
+        if found and NO_WALK:
             break
 
         parent_dir = os.path.dirname(current_dir)
@@ -78,11 +80,12 @@ def find_md_files():
 
 
 class Command:
-    def __init__(self, file, name, title, level, source, line_number):
+    def __init__(self, file, level, name, dependencies, description, source, line_number):
         self.file = file
-        self.name = name
-        self.title = title
         self.level = level
+        self.name = name
+        self.dependencies = dependencies
+        self.description = description
         self.source = source
         self.line_number = line_number
 
@@ -92,20 +95,21 @@ def parse_md_file(file):
     with open(file, "r") as f:
         lines = [line.rstrip() for line in f.read().splitlines()]
         for line_number, line in enumerate(lines):
-            match = re.match(r"^#+\s\[([^\]]+)\]\(\)(.*$)", line)
-
+            match = re.match(r"^(#+)\s\[([^\]]+)\]\(([^\)]*)\)\s*(.*)$", line)
             if not match:
                 continue
-            level = len(line.split(" ")[0])
+
             source = re.split(
-                r"^#+\s", "\n".join(lines[line_number:]), flags=re.MULTILINE
+                r"^#", "\n".join(lines[line_number:]), flags=re.MULTILINE
             )[1].strip()
+
             commands.append(
                 Command(
                     file=file,
-                    name=match.group(1).strip(),
-                    title=match.group(2).strip(),
-                    level=level,
+                    level=len(match.group(1)),
+                    name=match.group(2).strip(),
+                    dependencies=re.split(r"\s+", match.group(3).strip()),
+                    description=match.group(4).strip(),
                     source=source,
                     line_number=line_number + 1,
                 )
@@ -122,6 +126,7 @@ def print_help():
                 continue
             max_length = max(max_length, len(command.name))
 
+    print("More info at https://github.com/tzador/makedown")
     print()
     for file in find_md_files():
         commands = parse_md_file(file)
@@ -136,8 +141,9 @@ def print_help():
                 "$",
                 green("makedown " + command.name) +
                 (" " + " " * (max_length - len(command.name))+"    # " +
-                 command.title if command.title else ""),
+                 command.description if command.description else ""),
             )
+            print(command.dependencies)
         print()
 
 
@@ -157,7 +163,30 @@ def print_command_help(command_name):
     print(red(f"Unknown command '{command_name}'"), file=sys.stderr)
 
 
+def execute_dependencies(command, executed_commands=None):
+    if executed_commands is None:
+        executed_commands = set()
+
+    for dep in command.dependencies:
+        if dep and dep not in executed_commands:
+            for file in find_md_files():
+                for cmd in parse_md_file(file):
+                    if cmd.name == dep:
+                        execute_dependencies(cmd, executed_commands)
+                        execute_command(cmd)
+                        executed_commands.add(dep)
+                        break
+                else:
+                    continue
+                break
+            else:
+                print(red(f"Dependency '{dep}' not found for command '{
+                      command.name}'"), file=sys.stderr)
+
+
 def execute_command(command):
+    execute_dependencies(command)
+
     for section in command.source.split("```")[1::2]:
         parts = section.split("\n", 1)
 
