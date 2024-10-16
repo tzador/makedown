@@ -17,6 +17,11 @@ class Test(unittest.TestCase):
         self.assertEqual(status, 0)
         self.assertEqual(stdout, "hello, world\n")
 
+    def test_hashbang(self):
+        status, stdout, _stderr = execute("hashbang")
+        self.assertEqual(status, 0)
+        self.assertEqual(stdout, "hello, world\n")
+
 
 if __name__ == "__main__":
     unittest.main()
