@@ -9,6 +9,7 @@
 # correct file paths in error messages
 # when hashbang is present, use that
 # do not show in --help the commands that start with _
+# when command is misstyped, output the similar available commands
 
 import time
 import sys
