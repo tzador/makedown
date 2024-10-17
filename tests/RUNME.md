@@ -16,7 +16,19 @@ npx prettier --write .
 npm run build
 ```
 
-# [deploy](build) Deploy to surge.sh
+## ![deploy](build one two three) Deploy to surge.sh
+
+```bash
+surge ./build my-project.surge.sh
+```
+
+## ![deploy](build,one,two,three) Deploy to surge.sh
+
+```bash
+surge ./build my-project.surge.sh
+```
+
+## [deploy](build,one,two,three) Deploy to surge.sh
 
 ```bash
 surge ./build my-project.surge.sh
