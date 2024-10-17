@@ -8,6 +8,10 @@
 surge ./build my-project.surge.sh
 ```
 
+```stdout
+
+```
+
 ## `deploy (build one two three)` - deploy to surge.sh
 
 ```bash
