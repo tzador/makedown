@@ -66,7 +66,7 @@ This is a more detailed description of the command.
 ```python
 #!/usr/bin/env python
 
-echo "world"
+print("world")
 ```
 ````
 
