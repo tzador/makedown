@@ -1,34 +1,40 @@
-# [clean]() Clean build directory
+# clean - clean build directory
 
 ```bash
 rm -rf ./build
 ```
 
-# [format]() Format the source code
+# format - format the source code
 
 ```bash
 npx prettier --write .
 ```
 
-# [build](clean format) Build the project
+# build: clean format - build the project
 
 ```bash
 npm run build
 ```
 
-## ![deploy](build one two three) Deploy to surge.sh
+## deploy: one two three - deploy to surge.sh
 
 ```bash
 surge ./build my-project.surge.sh
 ```
 
-## ![deploy](build,one,two,three) Deploy to surge.sh
+## deploy: build one two three - deploy to surge.sh
 
 ```bash
 surge ./build my-project.surge.sh
 ```
 
-## [deploy](build,one,two,three) Deploy to surge.sh
+## deploy: build one two three - Deploy to surge.sh
+
+```bash
+surge ./build my-project.surge.sh
+```
+
+# deploy: clean build # Deploy to surge.sh
 
 ```bash
 surge ./build my-project.surge.sh
