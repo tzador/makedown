@@ -1,3 +1,7 @@
+---
+makedown: true
+---
+
 ## `deploy` - Deploy to surge.sh
 
 ```bash
