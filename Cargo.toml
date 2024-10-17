@@ -1,0 +1,11 @@
+[package]
+name = "makedown"
+version = "0.0.0"
+edition = "2021"
+description = "Executable Markdown shell scripts"
+license = "MIT"
+documentation = "https://docs.rs/makedown"
+homepage = "https://makedown.dev"
+repository = "https://github.com/tzador/makedown"
+
+[dependencies]

@@ -1,7 +1,49 @@
-__pycache__
+# Compiled output
+/target/
+
+# Rust/Cargo specific files
+**/*.rs.bk
+**/Cargo.lock
+
+# Dependencies
+.cargo/
+/.cargo/
+pkg/
+
+# Backup files
+*.bak
+*.rs.bk
+*.swo
+*.swp
+*.tmp
+
+# Other common files
 .DS_Store
-build
-dist
-makedown.egg-info
-node_modules
-venv
+Thumbs.db
+
+# IDE/editor specific settings
+.idea/
+*.log
+*.out
+/.vscode/
+/*.iml
+
+# Binaries
+*.app
+*.dll
+*.dylib
+*.exe
+*.out
+*.so
+
+
+# Added by cargo
+
+/target
+
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target
