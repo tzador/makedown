@@ -10,7 +10,7 @@ rm -rf ./build
 npx prettier --write .
 ```
 
-# build: clean format - build the project
+# <span style="color: dodgerblue;">build</span>: clean format - build the project
 
 ```bash
 npm run build
