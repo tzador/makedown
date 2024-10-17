@@ -1,5 +1,5 @@
 ---
-makedown: true
+- makedown
 ---
 
 ## `deploy` - Deploy to surge.sh
