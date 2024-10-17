@@ -1,18 +1,5 @@
 # [makedown](https://github.com/tzador/makedown) - A Markdown-powered Makefile Alternative
 
-![](./docs/screenshot.png)
-
-`makedown` combines the power of Markdown documentation with the simplicity of
-Makefiles, allowing you to embed and execute scripts directly from your `.md`
-files. It's ideal for developers who want to keep documentation and scripts
-side-by-side, while leveraging the clarity of markdown syntax highlighting. With
-**makedown**, you can define and run commands in a variety of programming
-languages, all from within your Markdown files.
-
----
-
-## Why makedown?
-
 Traditional tools like `Makefile` and `package.json` scripts are useful but
 limited:
 
@@ -24,6 +11,35 @@ limited:
 **makedown** fills the gap by offering a simple, language-agnostic way to define
 scripts within Markdown, complete with built-in documentation and the ability to
 execute commands with ease.
+
+![](./docs/screenshot.png)
+
+- [Key Features](#key-features)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Define Commands in Markdown](#define-commands-in-markdown)
+  - [Running Commands](#running-commands)
+  - [Command Dependencies](#command-dependencies)
+  - [Viewing Available Commands](#viewing-available-commands)
+  - [Example Directory Structure](#example-directory-structure)
+- [Command Syntax](#command-syntax)
+- [Example](#example)
+- [Advanced Features](#advanced-features)
+  - [Interpreter Aliases](#interpreter-aliases)
+  - [Hierarchical Scanning](#hierarchical-scanning)
+  - [Debug Mode](#debug-mode)
+  - [No Color Mode](#no-color-mode)
+- [Upgrading makedown](#upgrading-makedown)
+- [Uninstall](#uninstall)
+- [Contributing](#contributing)
+- [License](#license)
+
+`makedown` combines the power of Markdown documentation with the simplicity of
+Makefiles, allowing you to embed and execute scripts directly from your `.md`
+files. It's ideal for developers who want to keep documentation and scripts
+side-by-side, while leveraging the clarity of markdown syntax highlighting. With
+**makedown**, you can define and run commands in a variety of programming
+languages, all from within your Markdown files.
 
 ---
 
