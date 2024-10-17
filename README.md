@@ -1,32 +1,6 @@
 # [makedown](https://github.com/tzador/makedown) - A Markdown-powered Makefile Alternative
 
-| Markdown                                  | Terminal          |
-| ----------------------------------------- | ----------------- |
-| ````markdown                              |                   |
-| # [clean]() Clean build directory         | $ makedown --help |
-|                                           |                   |
-| ```bash                                   |                   |
-| rm -rf ./build                            |                   |
-| ```                                       |                   |
-|                                           |                   |
-| # [format]() Format the source code       |                   |
-|                                           |                   |
-| ```bash                                   |                   |
-| npx prettier --write .                    |                   |
-| ```                                       |                   |
-|                                           |                   |
-| # [build](clean format) Build the project |                   |
-|                                           |                   |
-| ```bash                                   |                   |
-| npm run build                             |                   |
-| ```                                       |                   |
-|                                           |                   |
-| # [deploy](build) Deploy to surge.sh      |                   |
-|                                           |                   |
-| ```bash                                   |                   |
-| surge ./build my-project.surge.sh         |                   |
-| ```                                       |                   |
-| ````                                      |                   |
+![](./docs/screenshot.png)
 
 `makedown` combines the power of Markdown documentation with the simplicity of
 Makefiles, allowing you to embed and execute scripts directly from your `.md`
