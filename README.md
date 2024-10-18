@@ -1,4 +1,80 @@
-# [makedown]() - A Markdown powered Makefile alternative
+# [makedown](https://makedown.dev) - Markdown + Makefile = Self documenting shell scripts
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+<!--
+    adsf
+    asdf
+    asdf
+    asdf
+    asdf
+    asdf
+    asdf
+    adsf
+    asd
+    asdf
+    asd
+    dsaf
+    adsf
+    dsaf
+    dfsa
+-->
+
+<!-- GENERATED START -->
+<div style="
+font-family: monospace;
+background-color: #f0f0f0;
+padding: 0.5rem 0;
+border: 1px solid #e0e0e0;
+border-radius: 0.5rem;
+display:flex;
+flex-direction: column;
+line-height: 1.5;
+">
+
+<h1 style="line-height: 1.5; font-size: 1.5rem; font-weight: bold; background: #e0e0e0; padding: 0 1rem"># Example README.md</h1>
+<div style="line-height: 1.5;">&nbsp;</div>
+<div style="background: #e0e0e0;">This file is contains runnable commands.</div>
+<div style="font-weight: bold; background: #e0e0e0; padding: 0 1rem">## world # Says "hello world"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #303030"><div style="color: dodgerblue; display: inline-block">$</span> makedown world</div></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+<div style="background: #f0f0f0; padding: 0 1rem">world</div>
+<div style="background: #404040; padding: 0 1rem; padding-left: 1rem; color: white">hello</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+<div style="background: #f0f0f0; padding: 0 1rem">world</div>
+<div style="background: #404040; padding: 0 1rem; padding-left: 1rem; color: white">hello</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+<div style="background: #f0f0f0; padding: 0 1rem">world</div>
+<div style="background: #404040; padding: 0 1rem; padding-left: 1rem; color: white">hello</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+<div style="background: #f0f0f0; padding: 0 1rem">world</div>
+<div style="background: #404040; padding: 0 1rem; padding-left: 1rem; color: white">hello</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+<div style="background: #f0f0f0; padding: 0 1rem">world</div>
+<div style="background: #404040; padding: 0 1rem; padding-left: 1rem; color: white">hello</div>
+</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;depends on:</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;- hello</div>
+<div>&nbsp;</div>
+<div>```python</div>
+<div>print("world")</div>
+<div>```</div>
+<div>&nbsp;</div>
+<h2 style="font-size: 1.125rem; font-weight: bold;">### hello # Says "hello"</h2>
+<div>&nbsp;</div>
+<div>```bash</div>
+<div>printf "hello "</div>
+<div>```</div>
+</div>
+<!-- GENERATED END -->
+
+---
 
 `makedown` (aka Makefile + Markdown) is motivated by developers need to define
 multiple scripts in one file next to their documentation, and have a handy way
@@ -28,7 +104,7 @@ discussions and sharing ideas or feedback.
 
 ---
 
-## Key Features
+#h2ey Feath2s
 
 - **Executable Markdown Scripting**: Use markdown files (.md) to organize
   commands and their documentation.
