@@ -18,7 +18,7 @@ LOCAL="local"
 
 # Command dependencies
 
-## @build
+## @build: DEFAULT
 
 Build the project
 
