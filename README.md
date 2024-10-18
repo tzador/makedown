@@ -6,19 +6,27 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ````
-## command # Command description        $ makedown command
-                                          hello
-More details about the command.
+# Example makedown file
+                                        $ makedown --help                      # List available commands
+                                        hello
+                                        world
 
-```python
-print("hello")
+## hello-command # Prints "hello"       $ makedown command
+                                        hello
+
+More details about the command.         $ m hello-command                      # a short `m` alias
+                                        hello
+```bash
+printf "hello"
 ```
 
-## command2 # Command2 description      $ makedown command2
+### world-command # Print "hello world" $ m wor<HIT TAB>ld-command             # Bash/Zsh autocomplete
 
-More details about the command.
+- hello # hello is run beforehand
 
-```bash
-echo world
+More details about the command.         $ m -h world-command                   # Full command help
+
+```python
+print("wolrd")
 ```
 ````
