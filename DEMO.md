@@ -1,8 +1,3 @@
----
-title: Blogging Like a Boss
-author: me
----
-
 Here are a few examples of commands:
 
 ## `welcome` - Prints a welcome message
@@ -12,6 +7,10 @@ By default bash is used as interpreter for the commands.
 ```
 echo "Welcome to makedown.sh"
 ```
+
+## <span class="color: dodgerblue">interpreter-chain</span> - Choose a specific interpreter
+
+When several code blocks are present, they are executed in order.
 
 ## `interpreter-chain` Choose a specific interpreter
 
