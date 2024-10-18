@@ -7,26 +7,28 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deseru
 
 ````
 # Example makedown file
-                                        $ makedown --help                      # List available commands
+                                        $ makedown --help          # List available commands
                                         hello
                                         world
 
 ## hello-command # Prints "hello"       $ makedown command
                                         hello
 
-More details about the command.         $ m hello-command                      # a short `m` alias
+More details about the command.         $ m hello-command          # a short `m` alias
                                         hello
 ```bash
 printf "hello"
 ```
 
-### world-command # Print "hello world" $ m wor<HIT TAB>ld-command             # Bash/Zsh autocomplete
+### world-command # Print "hello world" $ m wor<HIT TAB>ld-command # Bash/Zsh autocomplete
 
 - hello # hello is run beforehand
 
-More details about the command.         $ m -h world-command                   # Full command help
+More details about the command.         $ m -h world-command       # Full command help
 
 ```python
 print("wolrd")
 ```
+00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000
+01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
 ````
