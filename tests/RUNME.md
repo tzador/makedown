@@ -18,27 +18,29 @@ LOCAL="local"
 
 # Command dependencies
 
+## @build
+
+Build the project
+
 ```sh
-# No direct analog for .PHONY in makedown, all commands are considered executable
-```
-
-## Default target: build the project
-
-```sh build
 echo "Running default build target..."
 npm run build
 ```
 
-## Build the project by running Node.js build and compiling Rust modules
+## @build: format compile docker-build
 
-```sh build: format compile docker-build
+Build the project by running Node.js build and compiling Rust modules
+
+```sh
 echo "Building Node.js app..."
 npm run build
 ```
 
-## Clean build artifacts
+## @clean
 
-```sh clean
+Clean build artifacts
+
+```sh
 echo "Cleaning build directory..."
 rm -rf ${BUILD_DIR}
 echo "Cleaning Rust modules..."
@@ -46,75 +48,93 @@ cargo clean --manifest-path ${RUST_MODULE_DIR}/Cargo.toml
 echo "Done cleaning."
 ```
 
-## Format code for both Node.js and Rust
+## @format
 
-```sh format
+Format code for both Node.js and Rust
+
+```sh
 echo "Formatting Node.js files..."
 npm run format
 echo "Formatting Rust files..."
 cargo fmt --manifest-path ${RUST_MODULE_DIR}/Cargo.toml
 ```
 
-## Compile Rust modules
+## @compile compile
 
-```sh compile compile
+Compile Rust modules
+
+```sh
 echo "Compiling Rust modules..."
 cargo build --manifest-path ${RUST_MODULE_DIR}/Cargo.toml --release
 ```
 
-## Build the Docker image for the app
+## @docker-build
 
-```sh docker-build
+Build the Docker image for the app
+
+```sh
 echo "Building Docker image..."
 docker build -t ${DOCKER_IMAGE} .
 ```
 
-## Run the Docker image locally
+## @docker-run: docker-clean docker-build
 
-```sh docker-run: docker-clean docker-build
+Run the Docker image locally
+
+```sh
 echo "Running Docker image..."
 docker run -p 3000:3000 ${DOCKER_IMAGE}
 ```
 
 ## Deploy commands for various environments
 
-### Deploy locally
+### @deploy-local: build
 
-```sh deploy-local: build
+Deploy locally
+
+```sh
 echo "Deploying to local environment..."
 docker-compose up --build
 ```
 
-### Deploy to development
+### @deploy-dev: build
 
-```sh deploy-dev: build
+Deploy to development
+
+```sh
 echo "Deploying to development environment..."
 docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:dev
 docker push ${DOCKER_IMAGE}:dev
 echo "Deployed to development!"
 ```
 
-### Deploy to staging
+### @deploy-staging: build
 
-```sh deploy-staging: build
+Deploy to staging
+
+```sh
 echo "Deploying to staging environment..."
 docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:staging
 docker push ${DOCKER_IMAGE}:staging
 echo "Deployed to staging!"
 ```
 
-### Deploy to production
+### @deploy-prod: build
 
-```sh deploy-prod build
+Deploy to production
+
+```sh
 echo "Deploying to production environment..."
 docker tag ${DOCKER_IMAGE} ${DOCKER_IMAGE}:prod
 docker push ${DOCKER_IMAGE}:prod
 echo "Deployed to production!"
 ```
 
-## Invoke shell example
+## @shell
 
-```sh shell
+Invoke shell example
+
+```sh
 echo "Running a custom shell command..."
 bash -c "echo 'Hello from makedown shell invocation!'"
 ```
