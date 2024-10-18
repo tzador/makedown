@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Makedown Screenshot</title>
+    <style>
+      :root {
+        --base03: #002b36;
+        --base02: #073642;
+        --base01: #586e75;
+        --base00: #657b83;
+        --base0: #839496;
+        --base1: #93a1a1;
+        --base2: #eee8d5;
+        --base3: #fdf6e3;
+        --yellow: #b58900;
+        --orange: #cb4b16;
+        --red: #dc322f;
+        --magenta: #d33682;
+        --violet: #6c71c4;
+        --blue: #268bd2;
+        --cyan: #2aa198;
+        --green: #859900;
+        white-space: pre;
+      }
+
+      body {
+        font-family: monospace;
+        font-size: 11px;
+      }
+
+      .tabs {
+        width: 800px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        display: flex;
+        color: var(--base1);
+        line-height: 18px;
+      }
+
+      .tab {
+        flex-grow: 1;
+      }
+
+      #tab0 {
+        background-color: var(--base3);
+        padding: 1rem 0;
+      }
+
+      #tab1 {
+        background-color: var(--base03);
+      }
+
+      #tab2 {
+        background-color: var(--base03);
+      }
+
+      #tab3 {
+        background-color: var(--base03);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Makedown Screenshot</h1>
+    <div class="tabs">
+      <div id="tab0" class="tab"></div>
+      <div id="tab1" class="tab"></div>
+      <div id="tab2" class="tab"></div>
+    </div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+      function highlight(text) {
+        return text
+          .split("\n")
+          .map((line) => {
+            return line.replace(
+              /^\$(.*)/gm,
+              '<span style="color: var(--blue)">\$</span><span style="color: var(--base2)">$1</span>'
+            );
+          })
+          .map((line) => {
+            if (line.startsWith("&")) {
+              const inner = line.slice(1);
+              console.log([inner]);
+              const highlighed = inner.startsWith("```")
+                ? `<span style="color: var(--green); font-weight: bold">${inner}</span>`
+                : inner;
+              return `<div style="background-color: var(--base2); padding: 0 1rem">${highlighed}&nbsp;</div>`;
+            } else if (line.startsWith("#")) {
+              return `<div style="color: var(--base01); font-weight: bold; padding:0 1rem">${line.replace(
+                /(?<=#+\s)[^#]+(?=\s#)/g,
+                '<span style="color: var(--blue)">$&</span>'
+              )}&nbsp;</div>`;
+            } else {
+              return `<div style="padding:0 1rem">${line.replace(
+                /^- ([^#]+)/gm,
+                '<span style="color: var(--blue)">- $1</span>'
+              )}&nbsp;</div>`;
+            }
+            return `<div>${line}&nbsp;</div>`;
+          })
+          .join("");
+      }
+
+      (async () => {
+        const text = await fetch("screenshot.txt").then((r) => r.text());
+        const texts = text.split(/----+/g).map((t) => t.trim());
+
+        const tab0 = document.getElementById("tab0");
+        const tab1 = document.getElementById("tab1");
+        const tab2 = document.getElementById("tab2");
+
+        tab0.innerHTML = highlight(texts[0]);
+        tab1.innerHTML = highlight(texts[1]);
+        tab2.innerHTML = highlight(texts[2]);
+
+        const canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = (800 / 16) * 9;
+      })();
+    </script>
+  </body>
+</html>

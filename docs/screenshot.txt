@@ -1,0 +1,58 @@
+# RUNME.md
+
+Just a demostration of the makedown features.
+
+
+## hello-command # Prints "i am hello"
+
+
+More details about the command.
+
+&```bash
+&printf "i am hello"
+&```
+
+### world-command # Print "i am hello, i am world"
+
+- hello # depenency command is run beforehand
+
+More details about the command.
+
+&```python
+&print(", world")
+&```
+--------------------------------------------------------------------------------
+$ makedown --help
+hello
+world
+
+
+
+
+$ makedown command
+hello
+
+
+$ m hello-command
+hello
+
+$ m world-command
+
+
+$ m -h world-command
+--------------------------------------------------------------------------------
+# List available commands
+
+
+# a short `m` alias
+
+
+
+
+# Bash/Zsh autocomplete
+
+
+
+
+
+# Full command help
