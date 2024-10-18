@@ -1,16 +1,11 @@
 ---
-cwd: .
-env:
-  - name: FOO
-    value: BAR
-  - file: .env
+title: Blogging Like a Boss
+author: me
 ---
-
-# Demo makedown file
 
 Here are a few examples of commands:
 
-## [welcome]() Prints a welcome message
+## `welcome` - Prints a welcome message
 
 By default bash is used as interpreter for the commands.
 
@@ -18,7 +13,7 @@ By default bash is used as interpreter for the commands.
 echo "Welcome to makedown.sh"
 ```
 
-## [interpreter-chain]() Choose a specific interpreter
+## `interpreter-chain` Choose a specific interpreter
 
 When several code blocks are present, they are executed in order.
 
@@ -45,25 +40,25 @@ console.log(message);
 
 A set of handy file system helpers is available.
 
-### [dirsize]() Prints the total size of a directory
+### `dirsize` Prints the total size of a directory
 
 ```bash
 du -sh "$2"
 ```
 
-### [find-files]() Finds files in a directory recursively
+### `find-files` Finds files in a directory recursively
 
 ```zsh
 find "$1" -type f
 ```
 
-### [kill-port]() Kills a process listening on a port
+### `kill-port` Kills a process listening on a port
 
 ```zsh
 kill -9 $(lsof -t -i:$1)
 ```
 
-### [prime-numbers]() Prints the first 100 prime numbers
+### `prime-numbers` Prints the first 100 prime numbers
 
 ```ruby
 #!/usr/bin/env ruby
@@ -88,7 +83,7 @@ first_100_primes = first_n_primes(100)
 puts first_100_primes
 ```
 
-### [argv]() command line arguments test
+### `argv` command line arguments test
 
 ```python
 #!/usr/bin/env python
